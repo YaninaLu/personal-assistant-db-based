@@ -6,8 +6,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql.schema import ForeignKey, Table
 from sqlalchemy.sql.sqltypes import DateTime
 
-from db_session import engine
-
 
 Base = declarative_base()
 
@@ -15,8 +13,8 @@ notes_tags_conn = Table(
     "notes_to_tags",
     Base.metadata,
     Column("id", Integer, primary_key=True),
-    Column("note", Integer, ForeignKey("notes.id")),
-    Column("tag", Integer, ForeignKey("tags.id")),
+    Column("note", Integer, ForeignKey("notes.id", ondelete="CASCADE")),
+    Column("tag", Integer, ForeignKey("tags.id", ondelete="CASCADE")),
 )
 
 
