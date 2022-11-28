@@ -43,7 +43,3 @@ class Tag(Base):
     __tablename__ = "tags"
     id = Column(Integer, primary_key=True)
     name = Column(String(25), nullable=False)
-
-
-Base.metadata.create_all(engine)
-Base.metadata.bind = engine
